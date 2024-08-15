@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     account6,
     account7,
   ];
-
+  console.log('accounts' + accounts);
   // Elements
 
   const currencies = new Map([
@@ -167,15 +167,15 @@ document.addEventListener('DOMContentLoaded', function () {
       .reduce((acc, cur) => acc + cur);
     const interest = account.movements
       .filter(mov => mov > 0)
-      .map(depo => (depo * account.interestRate) / 100)
+      .map(depo => Math.round((depo * account.interestRate) / 100))
       .filter((int, i, arr) => {
         // console.log(arr);
         return int > 1;
       })
       .reduce((acc, cur) => acc + cur, 0);
-    summaryNeg.textContent = negativeMove;
-    summaryPos.textContent = positiveMove;
-    summaryInterest.textContent = interest;
+    summaryNeg.textContent = `$${negativeMove}`;
+    summaryPos.textContent = `$${positiveMove}`;
+    summaryInterest.textContent = `$${interest}`;
   };
   const updateUI = function () {
     displayMovements(currentAccount.movements);
