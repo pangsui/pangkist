@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function () {
           welcome.style.color = 'inherit';
         }, 6000);
       } else {
-        closeAccStyle('Failed to delete account', 'red');
+        closeAccStyle('Failed to delete account', '#fff');
         setTimeout(() => {
           closeAccStyle('Close Account', 'inherit');
         }, 3000);

@@ -314,6 +314,7 @@ body {
 @media (max-width: 766px) {
   .navbar__container {
     flex-direction: column;
+    width: 100%;
     gap: 1rem;
   }
   .main__container {
