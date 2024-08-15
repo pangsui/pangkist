@@ -1,0 +1,182 @@
+<!DOCTYPE movement__amount-text html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/png" href="/icon.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Pangkist</title>
+  </head>
+  <body>
+    <!-- TOP NAVIGATION -->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <p class="welcome">Log in to get started</p>
+        <img src="logo.png" alt="Logo" class="logo" />
+        <form class="login">
+          <input
+            type="text"
+            placeholder="user"
+            class="login__input login__input--user"
+            required
+          />
+          <input
+            type="password"
+            placeholder="PIN"
+            maxlength="4"
+            class="login__input login__input--pin"
+            required
+          />
+          <button class="login__btn">&rarr;</button>
+        </form>
+        <div class="logout__btn hidden">
+          <button class="logout__btn-btn">Log out</button>
+        </div>
+      </div>
+    </nav>
+    <!-- balance section -->
+    <main class="app">
+      <section class="balance container">
+        <div class="balance__container">
+          <div class="balance__text">
+            <h1 class="balance__heading">Current Balance</h1>
+            <p class="balance__date">As of 05/03/2037</p>
+          </div>
+          <div class="balance__amount">
+            <h1 class="balance__balance">$000.0</h1>
+          </div>
+        </div>
+      </section>
+
+      <!-- main section(movements, transfer, loan, close account) -->
+
+      <section class="main container">
+        <div class="main__container">
+          <div class="main__movements">
+            <div class="main__movement-items">
+              <div class="movement__content">
+                <p class="movement__deposit">2 Deposit</p>
+                <p class="movement__heading">3 days ago</p>
+              </div>
+              <div class="movement__amount">
+                <p class="movement__amount-deposit">$4000</p>
+              </div>
+            </div>
+            <div class="main__movement-items">
+              <div class="movement__content">
+                <p class="movement__withdrawal">1 Withdrawal</p>
+                <p class="movement__heading">24/02/2024</p>
+              </div>
+              <div class="movement__amount">
+                <p class="movement__amount-text movement__amount-withdrawal">
+                  -$2 000
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="main__actions">
+            <!-- Transfer -->
+            <div class="main__action transfer">
+              <h2 class="heading">Transfer Money</h2>
+              <form class="form form--transfer">
+                <div class="form__content">
+                  <input type="text" class="form__input form__input--to" />
+                  <input
+                    type="number"
+                    class="form__input form__input--amount"
+                  />
+                  <button class="form__btn form__btn--close">&rarr;</button>
+                </div>
+                <label class="form__label-to">Transfer to</label>
+                <label class="form__label-amount">Amount</label>
+              </form>
+            </div>
+            <!-- request a loan -->
+            <div class="main__action loan">
+              <h2 class="heading heading__loan">Request Loan</h2>
+              <form class="form form--loan">
+                <div class="form__content form_content-loan">
+                  <input
+                    type="number"
+                    class="form__input form__input--amount form__input-loan"
+                  />
+                  <button class="form__btn form__btn--loan">&rarr;</button>
+                </div>
+                <label class="form__label-amount">Amount</label>
+              </form>
+            </div>
+            <!-- close acount -->
+            <div class="main__action close">
+              <h2 class="heading heading__close-account">Close Account</h2>
+              <form class="form form--close">
+                <div class="form__content">
+                  <input
+                    type="text"
+                    class="form__input form__input--to form__input--delete-user"
+                  />
+                  <input
+                    type="number"
+                    class="form__input form__input--amount form__input--delete-pin"
+                  />
+                  <button class="form__btn form__btn--close delete__user">
+                    &rarr;
+                  </button>
+                </div>
+                <label class="form__label-to">Confirm User</label>
+                <label class="form__label-amount">Confirm Pin</label>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- summary section -->
+      <section class="summary container">
+        <div class="summary__contents">
+          <div class="summary__left">
+            <div class="summary__values">
+              <p class="summary__values-text">
+                IN
+                <span class="summary__value-amount summary__positive">
+                  $000</span
+                >
+              </p>
+              <p class="summary__values-text">
+                OUT
+                <span class="summary__value-amount summary__negative">
+                  $000</span
+                >
+              </p>
+              <p class="summary__values-text">
+                INTEREST
+                <span
+                  class="summary__value-amount summary__positive summary__positive-interest"
+                >
+                  $000</span
+                >
+              </p>
+            </div>
+            <button class="summary__btn--sort">&downarrow; SORT</button>
+          </div>
+          <div class="summary__right">
+            <p class="summary__log-out">
+              You will be logged out in
+              <span class="summary__logout-timer">05:00</span>
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- <footer>
+      &copy; by Jonas Schmedtmann. Don't claim as your own :)
+    </footer> -->
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

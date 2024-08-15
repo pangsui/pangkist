@@ -1,0 +1,393 @@
+/*
+ * Use this CSS to learn some intersting techniques,
+ * in case you're wondering how I built the UI.
+ * Have fun! 😁
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #444;
+  background-color: #f3f3f3;
+  height: 100vh;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+.navbar {
+  padding: 0 2rem;
+}
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logout__btn.hidden {
+  display: none;
+}
+.logout__btn {
+  position: relative;
+  right: 5%;
+}
+
+.welcome {
+  font-size: 1.9rem;
+  font-weight: 500;
+}
+
+.logo {
+  height: 5.25rem;
+}
+
+.login {
+  display: flex;
+}
+
+.login__input {
+  border: none;
+  padding: 0.5rem 2rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+  text-align: center;
+  width: 12rem;
+  border-radius: 10rem;
+  margin-right: 1rem;
+  color: inherit;
+  border: 1px solid #fff;
+  transition: all 0.3s;
+}
+
+.login__input:focus {
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+.login__input::placeholder {
+  color: #bbb;
+}
+
+.login__btn {
+  border: none;
+  background: none;
+  font-size: 2.2rem;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.balance__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  margin: 40px 0;
+}
+.balance__heading {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+.balance__balance {
+  font-size: 3.5rem;
+  font-weight: 500;
+}
+.balance__date {
+  font-size: 1.5rem;
+}
+/* main app */
+.app {
+  opacity: 0;
+  transition: all 1s;
+}
+/* main container */
+.main__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.main__movements {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+  max-height: 550px;
+}
+.main__movement-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.movement__content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.movement__deposit,
+.movement__withdrawal {
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.1rem 1rem;
+  border-radius: 10rem;
+  margin: 1.3rem 0 1.3rem 2rem;
+}
+.movement__amount-text {
+  margin-left: -100px;
+}
+.main__movement-items {
+  border-bottom: 2px solid #eee;
+}
+.movement__withdrawal {
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+}
+.movement__amount-text {
+  font-size: 1.8rem;
+}
+.movement__heading {
+  text-transform: uppercase;
+}
+/* actions,transfer,loan,close account */
+.main__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+.main__action {
+  background-image: linear-gradient(to top left, #ffb003, #ffcb03);
+  border-radius: 1rem;
+  padding: 3rem 4rem;
+  color: #333;
+  margin-left: 30px;
+  width: 100%;
+}
+.main__action.loan {
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+}
+.main__action.close {
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+}
+.heading {
+  font-size: 1.8rem;
+  padding-bottom: 1.5rem;
+}
+.form__content {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.form__btn,
+.logout__btn-btn {
+  width: 4rem;
+  border-radius: 10px;
+  border: none;
+  padding: 1rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+.logout__btn-btn {
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  padding: 0.4rem 2rem;
+  color: #fff;
+  width: 100%;
+}
+.logout__text {
+  font-size: 2rem;
+}
+.form__input.form__input--to,
+.form__input.form__input--amount {
+  width: 100%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  font-family: inherit;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
+  padding: 0.3rem 1rem;
+  border-radius: 0.7rem;
+  transition: all 0.3s;
+}
+.form__input.form__input--to:focus,
+.form__input.form__input--amount:focus {
+  outline-width: 0;
+}
+.form__label-to {
+  position: relative;
+  left: -25%;
+  font-size: 1.3rem;
+  color: #333;
+  font-weight: 500;
+}
+.form__label-amount,
+.main__action-loan .form__label {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.form__label-amount {
+  font-size: 1.3rem;
+  font-weight: 400;
+  position: relative;
+  left: -10%;
+}
+/* Summary section */
+.summary {
+  margin: 3rem auto;
+  padding-bottom: 3.5rem;
+}
+.summary__contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.summary__left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15rem;
+}
+.summary__values {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+}
+.summary__values-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.summary__value-amount {
+  font-size: 2.5rem;
+}
+.summary__positive {
+  color: #66c873;
+}
+.summary__negative {
+  color: #f5465d;
+}
+.summary__btn--sort {
+  border: none;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.summary__btn--sort:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+.summary__log-out {
+  font-size: 1.3rem;
+}
+.summary__logout-timer {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+/* Media queries */
+@media (max-width: 766px) {
+  .navbar__container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .main__container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .main__actions {
+    width: 100%;
+    max-width: 400px;
+    margin-left: -2rem;
+    /* padding-left: 30px; */
+    padding-bottom: 30px;
+  }
+  .form__label-amount {
+    position: relative;
+    left: -10%;
+  }
+  .summary__contents {
+    flex-direction: column;
+  }
+  .summary__left {
+    justify-content: start;
+    gap: 3rem;
+  }
+  .summary__values {
+    gap: 3rem;
+  }
+  .summary__values-text {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  .summary__value-amount {
+    font-size: 1.8rem;
+  }
+  .logout__btn {
+    position: absolute;
+    right: 8%;
+  }
+  .logout__btn-btn {
+    font-size: 1.5rem;
+  }
+  .logo {
+    width: 5rem;
+    height: 5rem;
+    position: relative;
+    left: 25%;
+  }
+  .welcome {
+    font-size: 1.5rem;
+    position: relative;
+    left: 13%;
+  }
+  .balance__heading {
+    font-size: x-large;
+    font-weight: 400;
+  }
+  .balance__balance {
+    font-size: x-large;
+    margin-right: 2.5rem;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 541px) {
+  .logo {
+    display: none;
+  }
+  .navbar__container {
+    gap: 3rem;
+  }
+  .welcome {
+    margin-left: -14rem;
+  }
+  .app {
+    position: relative;
+    top: -10%;
+  }
+}
