@@ -34,20 +34,46 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   const account3 = {
-    owner: 'Steven Thomas Williams',
-    movements: [200, -200, 340, -300, -20, 50, 400, -460],
+    owner: 'Pangsui Usifu Linge',
+    movements: [2000, -200, 3400, -3000, -200, 5000, 400, -3000, -500, 900],
     interestRate: 0.7,
     pin: 3333,
   };
-
   const account4 = {
-    owner: 'Sarah Smith',
-    movements: [430, 1000, 700, 50, 90],
-    interestRate: 1,
+    owner: 'Michael Finighang Muh',
+    movements: [200, -200, 340, -300, -200, 5000, 400, -460, 9000, -5000],
+    interestRate: 0.9,
     pin: 4444,
   };
+  const account5 = {
+    owner: 'Mbiba Hassanu',
+    movements: [2000, -200, 3400, -3000, -90, 50, 400, -430],
+    interestRate: 0.7,
+    pin: 5555,
+  };
 
-  const accounts = [account1, account2, account3, account4];
+  const account6 = {
+    owner: 'Usmanou Junior',
+    movements: [4300, 1000, 700, 50, 90, -400, -900, 700],
+    interestRate: 1,
+    pin: 6666,
+  };
+  const account7 = {
+    owner: 'Nyuykonge Amira Nyuykonge',
+    movements: [4300, 1000, 700, 500, 90, -400, -900, 7000],
+    interestRate: 0.8,
+    pin: 7777,
+  };
+
+  const accounts = [
+    account1,
+    account2,
+    account3,
+    account4,
+    account5,
+    account6,
+    account7,
+  ];
 
   // Elements
 
