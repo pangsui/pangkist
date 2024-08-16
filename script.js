@@ -222,7 +222,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="movement__amount">
                   <p class="movement__amount-text movement__amount-deposit">
-                    $${new Intl.NumberFormat(navigator.language).format(mov)}
+                    $${new Intl.NumberFormat(navigator.language).format(
+                      +mov.toFixed(2)
+                    )}
                   </p>
                 </div>
         </div>
@@ -267,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .reduce((acc, cur) => acc + cur);
     const interest = account.movements
       .filter(mov => mov > 0)
-      .map(depo => Math.round((depo * account.interestRate) / 100))
+      .map(depo => +((depo * account.interestRate) / 100).toFixed(2))
       .filter((int, i, arr) => {
         // console.log(arr);
         return int > 1;
