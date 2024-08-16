@@ -277,10 +277,10 @@ document.addEventListener('DOMContentLoaded', function () {
       .reduce((acc, cur) => acc + cur, 0);
     summaryNeg.textContent = `$${new Intl.NumberFormat(
       navigator.language
-    ).format(negativeMove)}`;
+    ).format(+negativeMove.toFixed(2))}`;
     summaryPos.textContent = `$${new Intl.NumberFormat(
       navigator.language
-    ).format(positiveMove)}`;
+    ).format(+positiveMove.toFixed(2))}`;
     summaryInterest.textContent = `$${new Intl.NumberFormat(
       navigator.language
     ).format(interest)}`;
