@@ -24,6 +24,16 @@ document.addEventListener('DOMContentLoaded', function () {
     movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
     interestRate: 1.2, // %
     pin: 1111,
+    movementsDates: [
+      '2019-11-01T13:15:33.035Z',
+      '2019-11-30T09:48:16.867Z',
+      '2019-12-25T06:04:23.907Z',
+      '2020-01-25T14:18:46.235Z',
+      '2020-02-05T16:33:06.386Z',
+      '2020-04-10T14:43:26.374Z',
+      '2024-08-15T18:49:59.371Z',
+      '2024-08-16T12:01:20.894Z',
+    ],
   };
 
   const account2 = {
@@ -31,6 +41,16 @@ document.addEventListener('DOMContentLoaded', function () {
     movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
     interestRate: 1.5,
     pin: 2222,
+    movementsDates: [
+      '2019-11-01T13:15:33.035Z',
+      '2019-11-30T09:48:16.867Z',
+      '2019-12-25T06:04:23.907Z',
+      '2020-01-25T14:18:46.235Z',
+      '2020-02-05T16:33:06.386Z',
+      '2020-04-10T14:43:26.374Z',
+      '2020-06-25T18:49:59.371Z',
+      '2020-07-26T12:01:20.894Z',
+    ],
   };
 
   const account3 = {
@@ -38,18 +58,52 @@ document.addEventListener('DOMContentLoaded', function () {
     movements: [2000, -200, 3400, -3000, -200, 5000, 400, -3000, -500, 900],
     interestRate: 0.7,
     pin: 3333,
+    movementsDates: [
+      '2019-11-01T13:15:33.035Z',
+      '2019-11-30T09:48:16.867Z',
+      '2019-12-25T06:04:23.907Z',
+      '2020-01-25T14:18:46.235Z',
+      '2020-02-05T16:33:06.386Z',
+      '2024-08-10T14:43:26.374Z',
+      '2024-08-14T18:49:59.371Z',
+      '2024-08-13T12:01:20.894Z',
+      '2024-08-15T18:49:59.371Z',
+      '2024-08-16T12:01:20.894Z',
+    ],
   };
   const account4 = {
     owner: 'Michael Finighang Muh',
     movements: [200, -200, 340, -300, -200, 5000, 400, -460, 9000, -5000],
     interestRate: 0.9,
     pin: 4444,
+    movementsDates: [
+      '2019-11-01T13:15:33.035Z',
+      '2019-11-30T09:48:16.867Z',
+      '2019-12-25T06:04:23.907Z',
+      '2020-01-25T14:18:46.235Z',
+      '2020-02-05T16:33:06.386Z',
+      '2020-04-10T14:43:26.374Z',
+      '2020-06-25T18:49:59.371Z',
+      '2024-08-14T12:01:20.894Z',
+      '2024-08-15T18:49:59.371Z',
+      '2024-08-16T12:01:20.894Z',
+    ],
   };
   const account5 = {
     owner: 'Mbiba Hassanu',
     movements: [2000, -200, 3400, -3000, -90, 50, 400, -430],
     interestRate: 0.7,
     pin: 5555,
+    movementsDates: [
+      '2019-11-01T13:15:33.035Z',
+      '2019-11-30T09:48:16.867Z',
+      '2019-12-25T06:04:23.907Z',
+      '2020-01-25T14:18:46.235Z',
+      '2020-02-05T16:33:06.386Z',
+      '2020-04-10T14:43:26.374Z',
+      '2023-06-25T18:49:59.371Z',
+      '2024-08-16T12:01:20.894Z',
+    ],
   };
 
   const account6 = {
@@ -57,12 +111,32 @@ document.addEventListener('DOMContentLoaded', function () {
     movements: [4300, 1000, 700, 50, 90, -400, -900, 700],
     interestRate: 1,
     pin: 6666,
+    movementsDates: [
+      '2019-11-01T13:15:33.035Z',
+      '2019-11-30T09:48:16.867Z',
+      '2019-12-25T06:04:23.907Z',
+      '2020-01-25T14:18:46.235Z',
+      '2020-02-05T16:33:06.386Z',
+      '2020-04-10T14:43:26.374Z',
+      '2020-06-25T18:49:59.371Z',
+      '2020-07-26T12:01:20.894Z',
+    ],
   };
   const account7 = {
     owner: 'Nyuykonge Amira Nyuykonge',
     movements: [4300, 1000, 700, 500, 90, -400, -900, 7000],
     interestRate: 0.8,
     pin: 7777,
+    movementsDates: [
+      '2019-11-01T13:15:33.035Z',
+      '2019-11-30T09:48:16.867Z',
+      '2019-12-25T06:04:23.907Z',
+      '2020-01-25T14:18:46.235Z',
+      '2020-02-05T16:33:06.386Z',
+      '2020-04-10T14:43:26.374Z',
+      '2024-08-15T18:49:59.371Z',
+      '2024-08-16T12:01:20.894Z',
+    ],
   };
 
   const accounts = [
@@ -74,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
     account6,
     account7,
   ];
-  console.log('accounts' + accounts);
+  // console.log('accounts' + accounts);
   // Elements
 
   const currencies = new Map([
@@ -111,21 +185,44 @@ document.addEventListener('DOMContentLoaded', function () {
   const btnloan = document.querySelector('.form__btn--loan');
   const loanMessage = document.querySelector('.heading__loan');
   const btnSort = document.querySelector('.summary__btn--sort');
+  const currentDate = document.querySelector('.date__now');
 
-  const displayMovements = function (movements, sort = false) {
+  const dateFormatter = function (date) {
+    const calcDaysPass = (date1, date2) =>
+      Math.round(Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)));
+    const daysPassed = calcDaysPass(new Date(), date);
+    console.log(daysPassed);
+
+    if (daysPassed === 0) return 'Today';
+    if (daysPassed === 1) return 'Yesterday';
+    if (daysPassed <= 7) return `${daysPassed} days ago`;
+
+    // const day = `${date.getDate()} `.padStart(2, 0);
+    // const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    // const year = date.getFullYear();
+    // return `${day}/${month}/${year}`;
+    return new Intl.DateTimeFormat(navigator.language).format(date);
+  };
+
+  const displayMovements = function (account, sort = false) {
     mainMovements.innerHTML = '';
-    const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+    const movs = sort
+      ? account.movements.slice().sort((a, b) => a - b)
+      : account.movements;
     movs.forEach(function (mov, i) {
+      const date = new Date(account.movementsDates[i]);
+      const displayDate = dateFormatter(date);
       const type = mov > 0 ? 'deposit' : 'withdrawal';
       const html = `
           <div class="main__movement-items">
                 <div class="movement__content">
                   <p class="movement__${type}">${i + 1} ${type}</p>
-                  <p class="movement__heading">3 days ago</p>
+                  <p class="movement__heading">${displayDate}</p>
                 </div>
                 <div class="movement__amount">
                   <p class="movement__amount-text movement__amount-deposit">
-                    $${mov}
+                    $${new Intl.NumberFormat(navigator.language).format(mov)}
                   </p>
                 </div>
         </div>
@@ -133,6 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
       mainMovements.insertAdjacentHTML('afterbegin', html);
     });
   };
+
   //user name creation
 
   const userName = function (accounts) {
@@ -150,7 +248,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const total = account['movements'].reduce((acc, cur) => {
       return acc + cur;
     });
-    currentBalance.textContent = `$${total}`;
+    currentBalance.textContent = `$${new Intl.NumberFormat(
+      navigator.language
+    ).format(total)}`;
     account.balance = total;
     console.log(account);
     return `$${total}`;
@@ -173,12 +273,18 @@ document.addEventListener('DOMContentLoaded', function () {
         return int > 1;
       })
       .reduce((acc, cur) => acc + cur, 0);
-    summaryNeg.textContent = `$${negativeMove}`;
-    summaryPos.textContent = `$${positiveMove}`;
-    summaryInterest.textContent = `$${interest}`;
+    summaryNeg.textContent = `$${new Intl.NumberFormat(
+      navigator.language
+    ).format(negativeMove)}`;
+    summaryPos.textContent = `$${new Intl.NumberFormat(
+      navigator.language
+    ).format(positiveMove)}`;
+    summaryInterest.textContent = `$${new Intl.NumberFormat(
+      navigator.language
+    ).format(interest)}`;
   };
   const updateUI = function () {
-    displayMovements(currentAccount.movements);
+    displayMovements(currentAccount);
     movementBalance(currentAccount);
     calcSummary(currentAccount);
   };
@@ -211,6 +317,30 @@ document.addEventListener('DOMContentLoaded', function () {
           }`;
           loginForm.style.visibility = 'hidden';
           logout.style.display = 'block';
+
+          //display date
+          // const date = new Date();
+          // const day = `${date.getDate()} `.padStart(2, 0);
+          // const month = `${date.getMonth() + 1}`.padStart(2, 0);
+          // const year = date.getFullYear();
+          // const hours = `${date.getHours()}`.padStart(2, 0);
+          // const mins = `${date.getMinutes()}`.padStart(2, 0);
+          // currentDate.textContent = `${day}/${month}/${year},${hours}:${mins}`;
+
+          const date = new Date();
+          const options = {
+            minute: 'numeric',
+            hour: 'numeric',
+            day: 'numeric',
+            month: 'numeric',
+            year: 'numeric',
+            weekday: 'long',
+          };
+          currentDate.textContent = new Intl.DateTimeFormat(
+            navigator.language,
+            options
+          ).format(date);
+
           updateUI();
         } else {
           console.log('password incorrect');
@@ -257,6 +387,8 @@ document.addEventListener('DOMContentLoaded', function () {
       ) {
         receiver.movements.push(amount);
         currentAccount.movements.push(-amount);
+        currentAccount.movementsDates.push(new Date().toISOString());
+        receiver.movementsDates.push(new Date().toISOString());
         setTimeout(() => {
           updateUI();
           styleChange('Success', 'green');
@@ -325,7 +457,10 @@ document.addEventListener('DOMContentLoaded', function () {
         currentAccount.movements.some(mov => mov >= 0.1 * amount)
       ) {
         currentAccount.movements.push(amount);
-        updateUI();
+        currentAccount.movementsDates.push(new Date().toISOString());
+        setTimeout(() => {
+          updateUI();
+        }, 3000);
         inputLoan.value = '';
         // inputLoan.blur();
         setTimeout(() => {
@@ -349,13 +484,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const movementSort = function () {
     btnSort.addEventListener('click', function (e) {
       e.preventDefault();
-      displayMovements(currentAccount.movements, !sorted);
+      displayMovements(currentAccount, !sorted);
       sorted = !sorted;
     });
   };
   movementSort();
 });
-
 // document
 //   .querySelector('.balance__balance')
 //   .addEventListener('click', function () {
@@ -365,3 +499,137 @@ document.addEventListener('DOMContentLoaded', function () {
 //     const textcnt = movementUI.map(el => +el.textContent.replace(/^\D+/g, ''));
 //     console.log(textcnt);
 //   });
+
+// this is a title case => This is a Title Case
+
+// const titleCase = function (string) {
+//   const exclusion = ['a', 'an', 'in', 'with', 'or', 'but'];
+//   const lowrc = string.toLowerCase().split(' ');
+//   const conv = lowrc
+//     .map(word =>
+//       exclusion.includes(word)
+//         ? word
+//         : word.replace(word[0], word[0].toUpperCase())
+//     )
+//     .join(' ');
+//   return conv;
+// };
+// console.log(titleCase('this is a title case in my PHD THESIS'));
+// console.log(titleCase('This is but a string or an array'));
+
+// Challenge time
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+// question 1
+dogs.forEach(dog => {
+  dog.recommendedFood = dog.weight ** 0.75 * 28;
+});
+// console.log(dogs);
+
+//Question 2
+const saraDogIndex = dogs
+  .map(dog => dog.owners)
+  .findIndex(dog => dog.includes('Sarah'));
+
+if (saraDogIndex >= 0) {
+  const seraObj = dogs.at(saraDogIndex);
+  console.log(seraObj);
+  if (seraObj.curFood > seraObj.recommendedFood) {
+    console.log('Eating too much');
+  } else {
+    console.log('Eating too little');
+  }
+} else {
+  console.log('dog not found');
+}
+
+//question 3
+let toomuch = [];
+let tooLittle = [];
+for (let obj of dogs) {
+  if (obj.curFood > obj.recommendedFood) {
+    toomuch.push(obj.owners);
+  } else {
+    tooLittle.push(obj.owners);
+  }
+}
+tooLittle = tooLittle.flat();
+toomuch = toomuch.flat();
+// const ownersEatTooMuch = dogs.map(dog =>
+//   dog.recommendedFood < dog.curFood ? dog.owners : ''
+// );
+// const ownersEatTooLittle = dogs.map(dog =>
+//   dog.recommendedFood > dog.curFood ? dog.owners : ''
+// );
+// console.log(ownersEatTooLittle);
+// console.log(ownersEatTooMuch);
+
+// let tooMuch = [];
+// for (let i of ownersEatTooMuch) {
+//   if (i === '') continue;
+//   tooMuch.push(i);
+// }
+// console.log(tooMuch);
+
+// Question 4
+console.log(`${toomuch.join(' and ')} dogs eat too much `);
+console.log(`${tooLittle.join(' and ')} dogs eat too little `);
+
+// Question 5
+console.log(dogs.some(dog => dog.recommendedFood === dog.curFood));
+
+//question 6
+console.log(
+  dogs.some(
+    dog =>
+      dog.curFood < 1.1 * dog.recommendedFood &&
+      dog.curFood > 0.9 * dog.recommendedFood
+  )
+);
+
+// Question 7
+let okayAmount2 = [];
+for (let dog of dogs) {
+  if (
+    dog.curFood < 1.1 * dog.recommendedFood &&
+    dog.curFood > 0.9 * dog.recommendedFood
+  ) {
+    okayAmount2.push(dog);
+  }
+}
+console.log(okayAmount2);
+
+// const okayAmount = dogs.map(dog => {
+//   if (
+//     dog.curFood < 1.1 * dog.recommendedFood &&
+//     dog.curFood > 0.9 * dog.recommendedFood
+//   ) {
+//     return dog;
+//   } else {
+//     return '';
+//   }
+// });
+
+// let okayModified = [];
+// for (let dog of okayAmount) {
+//   if (dog === '') continue;
+//   okayModified.push(dog);
+// }
+// console.log(okayAmount);
+// console.log(okayModified);
+
+//Question 8
+const dogsCopy = dogs.slice();
+dogsCopy.sort((a, b) => a.recommendedFood - b.recommendedFood);
+console.log(dogs);
+console.log(dogsCopy);
+
+const fruits = ['apple', 'banana', 'orange', 'grape'];
+const citrus = fruits.slice(2, 4);
+console.log(fruits);
+console.log(citrus);
