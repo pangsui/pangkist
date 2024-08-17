@@ -186,12 +186,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const loanMessage = document.querySelector('.heading__loan');
   const btnSort = document.querySelector('.summary__btn--sort');
   const currentDate = document.querySelector('.date__now');
+  const setLogoutTime = document.querySelector('.summary__logout-timer');
 
   const dateFormatter = function (date) {
     const calcDaysPass = (date1, date2) =>
       Math.round(Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)));
     const daysPassed = calcDaysPass(new Date(), date);
-    console.log(daysPassed);
+    // console.log(daysPassed);
 
     if (daysPassed === 0) return 'Today';
     if (daysPassed === 1) return 'Yesterday';
@@ -301,6 +302,36 @@ document.addEventListener('DOMContentLoaded', function () {
       userLoginPin.blur();
     }, 3000);
   };
+  //logout timer
+  let interval;
+  const startLogOutTimer = function () {
+    // set logout time
+    let time = 300;
+
+    // set timer
+    interval = setInterval(() => {
+      const mins = String(Math.trunc(time / 60)).padStart(2, 0);
+      const sec = String(time % 60).padStart(2, 0);
+      console.log(typeof mins);
+      setLogoutTime.textContent = `${mins}:${sec}`;
+      --time;
+      console.log(time);
+      if (time === 0) {
+        app.style.opacity = 0;
+        logout.style.display = 'none';
+        welcome.textContent = 'Log in to get started';
+        loginForm.style.visibility = 'visible';
+        clearInterval(interval);
+      }
+    }, 1000);
+    console.log('timer ' + time);
+  };
+  const resetTimer = () => {
+    if (interval) {
+      clearInterval(interval);
+      startLogOutTimer();
+    }
+  };
   //user login
   let currentAccount;
   const login = function (accounts) {
@@ -319,7 +350,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }`;
           loginForm.style.visibility = 'hidden';
           logout.style.display = 'block';
-
+          startLogOutTimer();
           //display date
           // const date = new Date();
           // const day = `${date.getDate()} `.padStart(2, 0);
@@ -360,6 +391,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const logoutUser = function () {
     logoutBtn.addEventListener('click', function (e) {
       e.preventDefault();
+      resetTimer();
       loginForm.style.visibility = 'visible';
       welcome.textContent = 'Log in to get started';
       logout.style.display = 'none';
@@ -376,6 +408,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const transferMoney = function (accounts) {
     btnTranfer.addEventListener('click', function (e) {
       e.preventDefault();
+
+      resetTimer();
+
       const amount = +transferAmount.value;
       const receiver = accounts.find(
         account => account.userName === transferTo.value
@@ -417,6 +452,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const deleteAcc = function (accounts) {
     btnClose.addEventListener('click', function (e) {
       e.preventDefault();
+      resetTimer();
       const user = deleteUser.value;
       const userPin = +deleteUserPin.value;
       const index = accounts.findIndex(account => account.userName === user);
@@ -453,6 +489,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const loanRequest = function () {
     btnloan.addEventListener('click', function (e) {
       e.preventDefault();
+      resetTimer();
       const amount = +inputLoan.value;
       if (
         amount > 0 &&
@@ -486,6 +523,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const movementSort = function () {
     btnSort.addEventListener('click', function (e) {
       e.preventDefault();
+      resetTimer();
       displayMovements(currentAccount, !sorted);
       sorted = !sorted;
     });
@@ -534,34 +572,34 @@ dogs.forEach(dog => {
 // console.log(dogs);
 
 //Question 2
-const saraDogIndex = dogs
-  .map(dog => dog.owners)
-  .findIndex(dog => dog.includes('Sarah'));
+// const saraDogIndex = dogs
+//   .map(dog => dog.owners)
+//   .findIndex(dog => dog.includes('Sarah'));
 
-if (saraDogIndex >= 0) {
-  const seraObj = dogs.at(saraDogIndex);
-  console.log(seraObj);
-  if (seraObj.curFood > seraObj.recommendedFood) {
-    console.log('Eating too much');
-  } else {
-    console.log('Eating too little');
-  }
-} else {
-  console.log('dog not found');
-}
+// if (saraDogIndex >= 0) {
+//   const seraObj = dogs.at(saraDogIndex);
+//   console.log(seraObj);
+//   if (seraObj.curFood > seraObj.recommendedFood) {
+//     console.log('Eating too much');
+//   } else {
+//     console.log('Eating too little');
+//   }
+// } else {
+//   console.log('dog not found');
+// }
 
-//question 3
-let toomuch = [];
-let tooLittle = [];
-for (let obj of dogs) {
-  if (obj.curFood > obj.recommendedFood) {
-    toomuch.push(obj.owners);
-  } else {
-    tooLittle.push(obj.owners);
-  }
-}
-tooLittle = tooLittle.flat();
-toomuch = toomuch.flat();
+// //question 3
+// let toomuch = [];
+// let tooLittle = [];
+// for (let obj of dogs) {
+//   if (obj.curFood > obj.recommendedFood) {
+//     toomuch.push(obj.owners);
+//   } else {
+//     tooLittle.push(obj.owners);
+//   }
+// }
+// tooLittle = tooLittle.flat();
+// toomuch = toomuch.flat();
 // const ownersEatTooMuch = dogs.map(dog =>
 //   dog.recommendedFood < dog.curFood ? dog.owners : ''
 // );
@@ -579,32 +617,32 @@ toomuch = toomuch.flat();
 // console.log(tooMuch);
 
 // Question 4
-console.log(`${toomuch.join(' and ')} dogs eat too much `);
-console.log(`${tooLittle.join(' and ')} dogs eat too little `);
+// console.log(`${toomuch.join(' and ')} dogs eat too much `);
+// console.log(`${tooLittle.join(' and ')} dogs eat too little `);
 
-// Question 5
-console.log(dogs.some(dog => dog.recommendedFood === dog.curFood));
+// // Question 5
+// console.log(dogs.some(dog => dog.recommendedFood === dog.curFood));
 
-//question 6
-console.log(
-  dogs.some(
-    dog =>
-      dog.curFood < 1.1 * dog.recommendedFood &&
-      dog.curFood > 0.9 * dog.recommendedFood
-  )
-);
+// //question 6
+// console.log(
+//   dogs.some(
+//     dog =>
+//       dog.curFood < 1.1 * dog.recommendedFood &&
+//       dog.curFood > 0.9 * dog.recommendedFood
+//   )
+// );
 
-// Question 7
-let okayAmount2 = [];
-for (let dog of dogs) {
-  if (
-    dog.curFood < 1.1 * dog.recommendedFood &&
-    dog.curFood > 0.9 * dog.recommendedFood
-  ) {
-    okayAmount2.push(dog);
-  }
-}
-console.log(okayAmount2);
+// // Question 7
+// let okayAmount2 = [];
+// for (let dog of dogs) {
+//   if (
+//     dog.curFood < 1.1 * dog.recommendedFood &&
+//     dog.curFood > 0.9 * dog.recommendedFood
+//   ) {
+//     okayAmount2.push(dog);
+//   }
+// }
+// console.log(okayAmount2);
 
 // const okayAmount = dogs.map(dog => {
 //   if (
@@ -626,12 +664,12 @@ console.log(okayAmount2);
 // console.log(okayModified);
 
 //Question 8
-const dogsCopy = dogs.slice();
-dogsCopy.sort((a, b) => a.recommendedFood - b.recommendedFood);
-console.log(dogs);
-console.log(dogsCopy);
+// const dogsCopy = dogs.slice();
+// dogsCopy.sort((a, b) => a.recommendedFood - b.recommendedFood);
+// console.log(dogs);
+// console.log(dogsCopy);
 
-const fruits = ['apple', 'banana', 'orange', 'grape'];
-const citrus = fruits.slice(2, 4);
-console.log(fruits);
-console.log(citrus);
+// const fruits = ['apple', 'banana', 'orange', 'grape'];
+// const citrus = fruits.slice(2, 4);
+// console.log(fruits);
+// console.log(citrus);
