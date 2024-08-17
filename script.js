@@ -307,12 +307,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const startLogOutTimer = function () {
     // set logout time
     let time = 300;
-
     // set timer
     interval = setInterval(() => {
       const mins = String(Math.trunc(time / 60)).padStart(2, 0);
       const sec = String(time % 60).padStart(2, 0);
-      console.log(typeof mins);
       setLogoutTime.textContent = `${mins}:${sec}`;
       --time;
       console.log(time);
@@ -391,7 +389,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const logoutUser = function () {
     logoutBtn.addEventListener('click', function (e) {
       e.preventDefault();
+      location.reload();
       resetTimer();
+
       loginForm.style.visibility = 'visible';
       welcome.textContent = 'Log in to get started';
       logout.style.display = 'none';
